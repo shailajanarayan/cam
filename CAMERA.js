@@ -49,5 +49,5 @@ function showLocalVideo() {
 function showRemoteVideo() {
 	pc.createOffer()
 	.then(offer => pc.setLocalDescription(offer) )
-	.then(() => sendMessage(yourId, JSON.stringify({'sdp': pc.localDescription})) );
+	.then(() => sendMessage(yourId, JSON.stringify({'sdp': pc.localDescription})));
 }
