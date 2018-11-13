@@ -1,26 +1,45 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<script src="CAMERA.js"></script>
-		<style type="text/css">
-			video {
-				background-color: #ddd;
-				border-radius: 7px;
-				margin: 10px 0px 0px 10px;
-				width: 320px;
-				height: 240px;
-			}
-			
-			button {
-	 			margin: 5px 0px 0px 10px !important;
-	 			width: 654px;
-			}
-		</style>
-	</head>
-	
-	<body onload="showLocalVideo()">
-		<video id="localVideo" autoplay></video>
-		<video id="remoteVideo" autoplay></video>
-		<br />
-		<button onclick="showRemoteVideo()">Call</button>
-	</body>
+<head>
+<meta charset="utf-8">
+<meta content="stuff, to, help, search, engines, not" name="keywords">
+<meta content="What this page is about." name="description">
+<meta content="Display Webcam Stream" name="title">
+<title>Display Webcam Stream</title>
+  
+<style>
+#container {
+    margin: 0px auto;
+    width: 500px;
+    height: 375px;
+    border: 10px #333 solid;
+}
+#videoElement {
+    width: 500px;
+    height: 375px;
+    background-color: #666;
+}
+</style>
+</head>
+  
+<body>
+<div id="container">
+    <video autoplay="true" id="videoElement">
+     
+    </video>
+</div>
+<script>
+ var video = document.querySelector("#videoElement");
+ 
+if (navigator.mediaDevices.getUserMedia) {       
+    navigator.mediaDevices.getUserMedia({video: true})
+  .then(function(stream) {
+    video.srcObject = stream;
+  })
+  .catch(function(err0r) {
+    console.log("Something went wrong!");
+  });
+}
+</script>
+</body>
 </html>
